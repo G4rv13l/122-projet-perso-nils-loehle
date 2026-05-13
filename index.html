@@ -3,16 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mon projet 122</title>
+  <title>Cinematon - Mon catalogue de films visionnés</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
   <header>
-    <h1>Mon projet</h1>
+    <h1>Cinematon</h1>
+    <p>Gestionnaire de films JavaScript</p>
   </header>
 
   <main>
-    <ul id="list"></ul>
+    <!-- Barre de recherche -->
+    <section class="controls">
+      <input type="text" id="recherche" placeholder="Chercher un film ou un réalisateur">
+    </section>
+
+    <!-- Conteneur des films, prévu pour s'afficher en grille -->
+    <section id="films-container" class="films-grid"></section>
   </main>
 
   <script src="js/script.js"></script>
