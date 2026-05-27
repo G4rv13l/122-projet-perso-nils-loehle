@@ -1,6 +1,6 @@
 "use strict";
 
-// Tableau de films, prémisces générées avec Claude
+// Tableau de films
 let films = [
     {
         titre: "Forrest Gump",
@@ -89,50 +89,115 @@ let films = [
         note: 8.6,
         genre: "Drame",
         poster: "affiches/The_Green_Mile.jpg"
+    },
+    {
+        titre: "L'affaire Bojarski",
+        realisateur: "Jean-Paul Salomé",
+        annee: 2025,
+        note: 7.0,
+        genre: "Policier",
+        poster: "affiches/affaire_bojarski.jpg"
     }
 ];
 
 
-// ============================================================
-// ------------------- Affichage console ----------------------
-// Fonction qui boucle pour générer les métadonnées des films
-// Usage des literals templates pour insérer des valeurs en
-// chaine de caractères
-// ============================================================
+/*
+* Recherche le terme entré dans la barre de recherche
+* @param {Object[]} liste - une liste de films
+* @param {string} terme - recherche de l'utilsateur
+* @returns {Object[]} liste - une liste filtré par résulats de recherche
+* */
 
-function afficherFilmsConsole(liste) {
-    console.log(`\n--- ${liste.length} film(s) ---`);
+function rechercherFilm(liste, terme) {
+    // si recherche vide, sortir
+    if (terme === "") return liste;
 
-    // Pour chaque film
-    for (const film of liste) {
-
-        // Attribuer des étoiles selon la note du film
-        let etoiles;
-        if (film.note >= 8.5) {
-            etoiles = "★★★";
-        } else if (film.note >= 7) {
-            etoiles = "★★";
-        } else {
-            etoiles = "★";
-        }
-        // Affichage console des composantes du film par concaténation
-        console.log(
-            `  ${etoiles} ${film.titre} (${film.annee})` +
-            ` - ${film.genre} - ${film.note}/10`
-        );
-    }
+    // toLowerCase() pour uniformiser et supprimer la distinction de casse
+    const recherche = terme.toLowerCase();
+    return liste.filter(film => film.titre.toLowerCase().includes(recherche));
 }
 
-afficherFilmsConsole(films);
 
-// ============================================================
-// PHASE 3 : TRIER (M5)
-// sort() avec spread [...] pour copier d'abord
-// ============================================================
+/*
+* Génération de la tuile d'un film
+* @param {Object[]} film - film dont la tuile doit être générée
+* @returns {string} Le code HTML de la tuile du film
+* */
+function genererTuileFilm(film) {
 
+    // injection de valeurs via templates literals
+    return `<article class="tuile-film">
+
+                <img src="${film.poster}" alt="${film.titre}" class="film-poster">
+                
+                <div class="film-info">
+                    <h3>${film.titre}</h3>
+                    <p class="film-meta">${film.annee} · ${film.genre}</p>
+                    <p class="film-realisateur">${film.realisateur}</p>
+                    
+                    <div class="film-note">
+                        <span class="note-badge">${film.note}</span>
+                    </div>
+                </div>
+                
+            </article>`;
+}
+
+/*
+* Triage des films par note en ordre décroissant
+* @param {Object[]} liste - une liste de films
+* @returns {Object[]} liste - une liste de films triée
+* */
 function trierParNote(liste) {
+    // Travaille sur une copie de la liste
     return [...liste].sort((a, b) => b.note - a.note);
 }
 
-console.log("\n--- Triés par note ---");
-afficherFilmsConsole(trierParNote(films));
+
+/*
+* Génère et stocke le contenu HTML des films avant de le charger
+* dans une section de la page index
+* @param {Object[]} liste - une liste de films
+* @returns {void}
+* */
+function afficherFilmsHTML(liste) {
+
+    let container = document.querySelector("#films-container");
+
+    // Message si aucun film
+    if (liste.length === 0) {
+        container.innerHTML = "<p class=\"empty-alert\">Pas de film correspondant</p>";
+        return;
+    }
+
+    let html = "";
+
+    // Stockage du html à générer
+    liste.forEach(film => {
+        html += genererTuileFilm(film);
+    });
+
+    // Substitution du contenu de la page
+    container.innerHTML = html;
+}
+
+/*
+* Recalcul du contenu pour mimer un rechargement de la page
+* @returns {void}
+* */
+function rafraichir() {
+
+    const terme = document.querySelector("#recherche").value;
+
+    // Recherche, tri puis affichage des films
+    let resultats = rechercherFilm(films, terme);
+    resultats = trierParNote(resultats);
+    afficherFilmsHTML(resultats);
+}
+
+// Passage de la fonction rafraichir sans parenthèses
+// Évènement déclenché à chaque caractère tapé (input), déclenchement unique si parenthèse
+document.querySelector("#recherche").addEventListener("input", rafraichir);
+
+// Afficher tous les films dès le chargement de la page
+rafraichir();

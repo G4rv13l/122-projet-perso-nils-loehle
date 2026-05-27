@@ -10,3 +10,29 @@ body {
   font-family: system-ui, sans-serif;
   padding: 2rem;
 }
+
+.films-grid {
+  display: grid;
+  /* Chaque colonne fait minimum 280px et maximum une part de la page */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+
+.tuile-film {
+  background: #f0f0f0;
+  padding: 2rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.tuile-film:hover {
+  transform: scale(1.05);
+}
+
+.film-poster {
+  width: 100%;           /* prend toute la largeur de la carte */
+  height: auto;        /* hauteur fixe identique pour toutes */
+  object-fit: contain;     /* recadre sans déformer l'image */
+  display: block;
+}
