@@ -4,11 +4,11 @@ Projet JavaScript — Cours 122 (ESIG)
 
 ## Description
 
-J'ai décidé de constituer un projet de listing de films, car c'est quelque chose que j'apprécie beaucoup.
+J'ai décidé de constituer un projet de listing de films.
 Je n'irai pas jusqu'à me considérer comme un cinéphile accompli, mais je diversifie le plus possible les
-films que je regarde. Récemment, j'ai pu découvrir de belles œuvres.
+films que je regarde. Récemment, j'ai revu de belles œuvres et à d'autres moment, simplement me vider l'esprit.
 
-Je regarde énormément de films, j'ai donc listé ceux que j'ai vus il y a moins de 6 mois.
+Je regarde beaucoup de films, j'ai donc listé ceux que j'ai vus il y a moins de 6 mois.
 Le mélange est assez varié.
 
 ## Lien GitHub Pages
