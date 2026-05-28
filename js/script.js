@@ -1,3 +1,4 @@
+// Directive de renforcement des règles du langage
 "use strict";
 
 // Tableau de films
@@ -100,29 +101,25 @@ let films = [
     }
 ];
 
-
-/*
-* Recherche le terme entré dans la barre de recherche
+/* Recherche le terme entré dans la barre de recherche
 * @param {Object[]} liste - une liste de films
 * @param {string} terme - recherche de l'utilsateur
 * @returns {Object[]} liste - une liste filtré par résulats de recherche
-* */
-
+*/
 function rechercherFilm(liste, terme) {
     // si recherche vide, sortir
     if (terme === "") return liste;
 
     // toLowerCase() pour uniformiser et supprimer la distinction de casse
     const recherche = terme.toLowerCase();
-    return liste.filter(film => film.titre.toLowerCase().includes(recherche));
+    return liste.filter(film => film.titre.toLowerCase().includes(recherche) ||
+    film.realisateur.toLowerCase().includes(recherche));
 }
 
-
-/*
-* Génération de la tuile d'un film
+/* Génération de la tuile d'un film
 * @param {Object[]} film - film dont la tuile doit être générée
 * @returns {string} Le code HTML de la tuile du film
-* */
+*/
 function genererTuileFilm(film) {
 
     // injection de valeurs via templates literals
@@ -143,23 +140,20 @@ function genererTuileFilm(film) {
             </article>`;
 }
 
-/*
-* Triage des films par note en ordre décroissant
+/* Triage des films par note en ordre décroissant
 * @param {Object[]} liste - une liste de films
 * @returns {Object[]} liste - une liste de films triée
-* */
+*/
 function trierParNote(liste) {
     // Travaille sur une copie de la liste
     return [...liste].sort((a, b) => b.note - a.note);
 }
 
-
-/*
-* Génère et stocke le contenu HTML des films avant de le charger
+/* Génère et stocke le contenu HTML des films avant de le charger
 * dans une section de la page index
 * @param {Object[]} liste - une liste de films
 * @returns {void}
-* */
+*/
 function afficherFilmsHTML(liste) {
 
     let container = document.querySelector("#films-container");
@@ -181,10 +175,9 @@ function afficherFilmsHTML(liste) {
     container.innerHTML = html;
 }
 
-/*
-* Recalcul du contenu pour mimer un rechargement de la page
+/* Recalcul du contenu pour mimer un rechargement de la page
 * @returns {void}
-* */
+*/
 function rafraichir() {
 
     const terme = document.querySelector("#recherche").value;
@@ -201,3 +194,50 @@ document.querySelector("#recherche").addEventListener("input", rafraichir);
 
 // Afficher tous les films dès le chargement de la page
 rafraichir();
+
+const formAjoutFilm = document.getElementById("formulaire-ajout");
+
+/* Ajoute un film via le formulaire d'ajout envoyé
+* @returns {void}
+*/
+function ajouterFilm(event){
+
+    // Empêchement du rechargement de la page
+    event.preventDefault();
+
+    // Récupération des champs
+    const titreFilm = document.getElementById("input-titre").value;
+    const anneeFilm = document.getElementById("input-annee").value;
+    const genreFilm = document.getElementById("input-genre").value;
+    const realFilm = document.getElementById("input-real").value;
+    const noteFilm = document.getElementById("input-note").value;
+    let filmAAjouter = {};
+
+    // On ne traite l'envoi que si tous les champs ont été remplis
+    if (titreFilm !== "" && anneeFilm !== "" && genreFilm !== "" && realFilm !== "" &&
+        noteFilm >= 0 && noteFilm <= 10) {
+
+        // On prépare le texte à mettre pour le template img
+        const textePourUrl = titreFilm.trim().replaceAll(" ", "+");
+
+        // Nouvel objet film
+        filmAAjouter = {
+            titre: titreFilm,
+            realisateur: realFilm,
+            annee: anneeFilm,
+            note: noteFilm,
+            genre: genreFilm,
+            poster: "https://placehold.co/600x900?text=" + textePourUrl,
+        };
+
+        // Ajout du film à la liste générale, effacement du formulaire et rechargement des données
+        films.push(filmAAjouter);
+        formAjoutFilm.reset();
+        rafraichir();
+    }
+
+}
+
+// Écoute sur l'envoi du formulaire d'ajout
+// prevent default pour ne pas recharger la page
+formAjoutFilm.addEventListener("submit", ajouterFilm);

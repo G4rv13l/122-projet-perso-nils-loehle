@@ -20,7 +20,7 @@ Le mélange est assez varié.
 - [x] Recherche en temps réel
 - [x] Affichage dynamique de la liste
 - [ ] Tri par plusieurs critères
-- [ ] Ajout via formulaire
+- [x] Ajout via formulaire
 - [ ] Suppression d'éléments
 - [x] Responsive (mobile + desktop)
 
@@ -29,13 +29,27 @@ Le mélange est assez varié.
 [Ajoute des captures de ton projet ici]
 
 ## Transparence IA
+- Transmission de prompt et de l'historique de discussion complet avec les modèles utilisés.
 
 ### Outils utilisés
-J'utilise principalement ChatGPT et Perplexity pour mes recherches de documentation et de compréhension
-de concepts et d'éléments.
+J'utilise principalement l'outil français Mammouth Ai qui permet l'accès à un bouquet très vaste de modèles IA, pour
+un prix dérisoire. Les modèles que j'utilise le plus couramment sont Claude (Sonnet) pour l'aide concernant le code,
+ChatGpt pour la compréhension/vulgarisation de concepts théoriques et perplexity pour la recherche d'information.
 
 ### Prompts utilisés
-[Copie ici les prompts importants que tu as donnés à l'IA]
+- [Décomposition feature d'ajout de film](https://mammouth.ai/shared/153b7f73-fcca-4e07-b712-68ca6d1e3a34)
+- [Questionnement sur les types durant documentation + problème de push](https://mammouth.ai/shared/151ea116-8913-434b-b466-042fe8de9232)
 
 ### Ce que j'ai appris vs ce que l'IA a généré
-[Explique ce que tu as écrit toi-même et ce que l'IA a produit. Qu'as-tu appris en utilisant l'IA ?]
+#### IA
+- Claude (Sonnet) m'a permis de localiser des erreurs bêtes (.value oublié durant la récupération de mes champs par ex.)
+- J'ai aussi utilisé Claude pour générer la structure du tableau d'objet pour le listing des films
+- Je me suis constitué des supports PDF de synthèse du cours gitbook, pratique pour passer en revue certains sujets
+rapidement durant le développement.
+- L'IA est un outil formidable pour aider à cadrer ma pensée, j'ai tendance à vouloir tout faire en même temps et le
+fait de pouvoir se constituer un plan d'attaque est très appréciable.
+
+#### Connaissances acquises
+- J'ignorais l'existence des aria-label, ça me permet de respecter la sémantique du formulaire sans devoir afficher
+un élément que j'aurais dû masque plus tard
+- 
