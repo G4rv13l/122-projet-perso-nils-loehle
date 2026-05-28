@@ -19,10 +19,10 @@ Le mélange est assez varié.
 
 - [x] Recherche en temps réel
 - [x] Affichage dynamique de la liste
-- [ ] Tri par plusieurs critères
 - [x] Ajout via formulaire
-- [ ] Suppression d'éléments
 - [x] Responsive (mobile + desktop)
+- [ ] Tri par plusieurs critères
+- [ ] Suppression d'éléments
 
 ## Captures d'écran
 
@@ -38,7 +38,7 @@ ChatGpt pour la compréhension/vulgarisation de concepts théoriques et perplexi
 
 ### Prompts utilisés
 - [Décomposition feature d'ajout de film](https://mammouth.ai/shared/153b7f73-fcca-4e07-b712-68ca6d1e3a34)
-- [Questionnement sur les types durant documentation + problème de push](https://mammouth.ai/shared/151ea116-8913-434b-b466-042fe8de9232)
+- [Questionnement sur les types durant documentation + problème de push + compréhension générale](https://mammouth.ai/shared/151ea116-8913-434b-b466-042fe8de9232)
 
 ### Ce que j'ai appris vs ce que l'IA a généré
 #### IA
@@ -50,6 +50,5 @@ rapidement durant le développement.
 fait de pouvoir se constituer un plan d'attaque est très appréciable.
 
 #### Connaissances acquises
-- J'ignorais l'existence des aria-label, ça me permet de respecter la sémantique du formulaire sans devoir afficher
-un élément que j'aurais dû masque plus tard
-- 
+- J'ignorais l'existence des aria-label, cela me permet de respecter la sémantique du formulaire sans devoir afficher
+un élément que j'aurais dû masquer plus tard.
