@@ -11,6 +11,17 @@ body {
   padding: 2rem;
 }
 
+header {
+  display: flex;
+  margin: 0 auto 25px auto;
+  flex-direction: column;
+  max-width: 600px;
+}
+
+#films-container{
+  margin-top: 50px;
+}
+
 .films-grid {
   display: grid;
   /* Chaque colonne fait minimum 280px et maximum une part de la page */
@@ -23,11 +34,17 @@ body {
   background: #f0f0f0;
   padding: 2rem;
   border-radius: 8px;
-  transition: transform 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+img {
+  border-radius: 8px;
 }
 
 .tuile-film:hover {
   transform: scale(1.05);
+  background: rgba(0, 0, 0, 0.1);
+
 }
 
 .film-poster {
@@ -35,4 +52,21 @@ body {
   height: auto;        /* hauteur fixe identique pour toutes */
   object-fit: contain;     /* recadre sans déformer l'image */
   display: block;
+}
+
+/*
+Zone de formulaire
+*/
+section.controls {
+  display: flex;
+  flex-direction: column; /* Dispose les éléments en colonne */
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.controls input {
+  min-width: 125px;
+  max-width: 200px;
+  box-sizing: border-box;
 }

@@ -112,8 +112,9 @@ function rechercherFilm(liste, terme) {
 
     // toLowerCase() pour uniformiser et supprimer la distinction de casse
     const recherche = terme.toLowerCase();
+
     return liste.filter(film => film.titre.toLowerCase().includes(recherche) ||
-    film.realisateur.toLowerCase().includes(recherche));
+        film.realisateur.toLowerCase().includes(recherche));
 }
 
 /* Génération de la tuile d'un film
@@ -140,13 +141,41 @@ function genererTuileFilm(film) {
             </article>`;
 }
 
-/* Triage des films par note en ordre décroissant
-* @param {Object[]} liste - une liste de films
-* @returns {Object[]} liste - une liste de films triée
+// Récupération de l'élément dropdown
+const valeurTri = document.getElementById("tri-select");
+
+valeurTri.addEventListener("change", rafraichir);
+
+/* Tri des films selon sélection du menu dropdown
+* @param {Object[]} listeDeFilmsATrier - liste à trier
+* @returns {Object[]} La liste de films triée selon sélection
 */
-function trierParNote(liste) {
-    // Travaille sur une copie de la liste
-    return [...liste].sort((a, b) => b.note - a.note);
+function trierFilms(listeDeFilmsATrier) {
+
+    // Récupération de la valeur de la dropdown et non de l'élément
+    let critereDeTri = valeurTri.value;
+
+    // Enregistrement d'une copie de travail
+    let listeATrier = [...listeDeFilmsATrier];
+
+    // Détermination du tri à effectuer
+    if (critereDeTri === "annee-decroiss") {
+        listeATrier = listeATrier.sort((a, b) => b.annee - a.annee);
+
+    }else if (critereDeTri === "annee-croiss") {
+        listeATrier = listeATrier.sort((a, b) => a.annee - b.annee);
+
+    }else if (critereDeTri === "real-decroiss"){
+        listeATrier.sort((a, b) => b.realisateur.localeCompare(a.realisateur));
+
+    }else if (critereDeTri === "real-croiss"){
+        listeATrier = listeATrier.sort((a, b) => a.realisateur.localeCompare(b.realisateur));
+    }else{
+        listeATrier = listeATrier.sort((a, b) => b.note - a.note);
+    }
+
+    // Renvoi de la liste triée selon sélection
+    return listeATrier;
 }
 
 /* Génère et stocke le contenu HTML des films avant de le charger
@@ -184,8 +213,9 @@ function rafraichir() {
 
     // Recherche, tri puis affichage des films
     let resultats = rechercherFilm(films, terme);
-    resultats = trierParNote(resultats);
+    resultats = trierFilms(resultats);
     afficherFilmsHTML(resultats);
+
 }
 
 // Passage de la fonction rafraichir sans parenthèses
