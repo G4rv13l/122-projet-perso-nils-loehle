@@ -9,7 +9,7 @@ let films = [
         annee: 1994,
         note: 8.8,
         genre: "Drame",
-        poster: "affiches/Forrest_Gump.jpg",
+        poster: "affiches/Forrest_Gump.webp",
     },
     {
         titre: "Les Évadés",
@@ -17,7 +17,7 @@ let films = [
         annee: 1994,
         note: 9.3,
         genre: "Drame",
-        poster: "affiches/The_Shawshank_Redemption.jpg"
+        poster: "affiches/The_Shawshank_Redemption.webp"
     },
     {
         titre: "Death Business",
@@ -25,7 +25,7 @@ let films = [
         annee: 2023,
         note: 7.1,
         genre: "Drame",
-        poster: "affiches/The_Burial.jpg"
+        poster: "affiches/The_Burial.webp"
     },
     {
         titre: "Will Hunting",
@@ -33,7 +33,7 @@ let films = [
         annee: 1997,
         note: 8.3,
         genre: "Drame",
-        poster: "affiches/Good_Will_Hunting.jpg"
+        poster: "affiches/Good_Will_Hunting.webp"
     },
     {
         titre: "L'Armée des ombres",
@@ -41,7 +41,7 @@ let films = [
         annee: 1969,
         note: 8.0,
         genre: "Guerre",
-        poster: "affiches/L'armée_des_ombres.jpg"
+        poster: "affiches/L'armée_des_ombres.webp"
     },
     {
         titre: "Le Pont de la rivière Kwaï",
@@ -49,7 +49,7 @@ let films = [
         annee: 1957,
         note: 8.1,
         genre: "Guerre",
-        poster: "affiches/The_Bridge_on_the_River_Kwai.jpg"
+        poster: "affiches/The_Bridge_on_the_River_Kwai.webp"
     },
     {
         titre: "Les Sentiers de la gloire",
@@ -57,7 +57,7 @@ let films = [
         annee: 1957,
         note: 8.4,
         genre: "Guerre",
-        poster: "affiches/Paths_of_Glory.jpg"
+        poster: "affiches/Paths_of_Glory.webp"
     },
     {
         titre: "Lake Mungo",
@@ -65,7 +65,7 @@ let films = [
         annee: 2008,
         note: 6.9,
         genre: "Horreur",
-        poster: "affiches/Lake_Mungo.jpg"
+        poster: "affiches/Lake_Mungo.webp"
     },
     {
         titre: "Catacombes",
@@ -73,7 +73,7 @@ let films = [
         annee: 2014,
         note: 6.2,
         genre: "Horreur",
-        poster: "affiches/As_Above_So_Below.jpg"
+        poster: "affiches/As_Above_So_Below.webp"
     },
     {
         titre: "Alien, le huitième passager",
@@ -81,7 +81,7 @@ let films = [
         annee: 1979,
         note: 8.4,
         genre: "Science-Fiction",
-        poster: "affiches/Alien.jpg"
+        poster: "affiches/Alien.webp"
     },
     {
         titre: "La Ligne verte",
@@ -89,7 +89,7 @@ let films = [
         annee: 1999,
         note: 8.6,
         genre: "Drame",
-        poster: "affiches/The_Green_Mile.jpg"
+        poster: "affiches/The_Green_Mile.webp"
     },
     {
         titre: "L'affaire Bojarski",
@@ -97,7 +97,7 @@ let films = [
         annee: 2025,
         note: 7.0,
         genre: "Policier",
-        poster: "affiches/affaire_bojarski.jpg"
+        poster: "affiches/affaire_bojarski.webp"
     },
     {
         titre: "The Fountain",
@@ -105,7 +105,7 @@ let films = [
         annee: 2006,
         note: 7.1,
         genre: "Science-Fiction",
-        poster: "affiches/The_Fountain.jpg"
+        poster: "affiches/The_Fountain.webp"
     },
     {
         titre: "Nuremberg",
@@ -113,7 +113,7 @@ let films = [
         annee: 2025,
         note: 7.2,
         genre: "Drame",
-        poster: "affiches/Nuremberg.jpg"
+        poster: "affiches/Nuremberg.webp"
     },
     {
         titre: "Un ours dans le Jura",
@@ -121,7 +121,7 @@ let films = [
         annee: 2024,
         note: 6.5,
         genre: "Comédie",
-        poster: "affiches/Un_ours_dans_le_Jura.jpg"
+        poster: "affiches/Un_ours_dans_le_Jura.webp"
     },
     {
         titre: "À la poursuite d'Octobre rouge",
@@ -129,7 +129,7 @@ let films = [
         annee: 1990,
         note: 7.6,
         genre: "Thriller",
-        poster: "affiches/The_Hunt_for_Red_October.jpg"
+        poster: "affiches/The_Hunt_for_Red_October.webp"
     }
 ];
 
