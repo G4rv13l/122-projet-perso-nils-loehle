@@ -1,4 +1,4 @@
-/* Styles du projet */
+@media (min-width: 768px) {
 
 * {
   margin: 0;
@@ -18,9 +18,12 @@ header {
   max-width: 600px;
 }
 
-#films-container{
-  margin-top: 50px;
+.empty-alert {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 5%;
 }
+
 
 .films-grid {
   display: grid;
@@ -28,23 +31,11 @@ header {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
   padding: 16px;
-}
-
-.tuile-film {
-  background: #f0f0f0;
-  padding: 2rem;
-  border-radius: 8px;
-  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  margin-top: 50px;
 }
 
 img {
   border-radius: 8px;
-}
-
-.tuile-film:hover {
-  transform: scale(1.05);
-  background: rgba(0, 0, 0, 0.1);
-
 }
 
 .film-poster {
@@ -54,9 +45,6 @@ img {
   display: block;
 }
 
-/*
-Zone de formulaire
-*/
 section.controls {
   display: flex;
   flex-direction: column; /* Dispose les éléments en colonne */
@@ -69,4 +57,41 @@ section.controls {
   min-width: 125px;
   max-width: 200px;
   box-sizing: border-box;
+}
+
+.tuile-film {
+  position: relative;
+  background: #f0f0f0;
+  padding: 2rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.tuile-film:hover {
+  transform: scale(1.05);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.btn-supprimer {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  background: white;
+  border-radius: 50%;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.tuile-film:hover .btn-supprimer {
+  opacity: 1;
+}
+}
+
+@media (max-width: 767px) {
+  .btn-supprimer {
+    opacity: 1;
+  }
 }

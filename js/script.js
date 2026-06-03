@@ -98,13 +98,51 @@ let films = [
         note: 7.0,
         genre: "Policier",
         poster: "affiches/affaire_bojarski.jpg"
+    },
+    {
+        titre: "The Fountain",
+        realisateur: "Darren Aronofsky",
+        annee: 2006,
+        note: 7.1,
+        genre: "Science-Fiction",
+        poster: "affiches/The_Fountain.jpg"
+    },
+    {
+        titre: "Nuremberg",
+        realisateur: "James Vanderbilt",
+        annee: 2025,
+        note: 7.2,
+        genre: "Drame",
+        poster: "affiches/Nuremberg.jpg"
+    },
+    {
+        titre: "Un ours dans le Jura",
+        realisateur: "Franck Dubosc",
+        annee: 2024,
+        note: 6.5,
+        genre: "Comédie",
+        poster: "affiches/Un_ours_dans_le_Jura.jpg"
+    },
+    {
+        titre: "À la poursuite d'Octobre rouge",
+        realisateur: "John McTiernan",
+        annee: 1990,
+        note: 7.6,
+        genre: "Thriller",
+        poster: "affiches/The_Hunt_for_Red_October.jpg"
     }
 ];
+
+// Assignation d'un id pour chaque film
+films.forEach((film, i) => film.id = i + 1);
+
+// Préparation de l'id libre à assigner pour un prochain film
+let idSuivant = films.length + 1;
 
 /* Recherche le terme entré dans la barre de recherche
 * @param {Object[]} liste - une liste de films
 * @param {string} terme - recherche de l'utilsateur
-* @returns {Object[]} liste - une liste filtré par résulats de recherche
+* @returns {Object[]} liste - une liste filtrée par résulats de recherche
 */
 function rechercherFilm(liste, terme) {
     // si recherche vide, sortir
@@ -125,8 +163,10 @@ function genererTuileFilm(film) {
 
     // injection de valeurs via templates literals
     return `<article class="tuile-film">
-
-                <img src="${film.poster}" alt="${film.titre}" class="film-poster">
+                <button class="btn-supprimer" data-id="${film.id}" 
+                    aria-label="Bouton de suppression">❌</button>
+                    
+                <img src="${film.poster}" alt="Affiche du film ${film.titre}" class="film-poster">
                 
                 <div class="film-info">
                     <h3>${film.titre}</h3>
@@ -260,6 +300,9 @@ function ajouterFilm(event){
             poster: "https://placehold.co/600x900?text=" + textePourUrl,
         };
 
+        // Assignation de l'id disponible au nouveau film
+        filmAAjouter.id = idSuivant;
+
         // Ajout du film à la liste générale, effacement du formulaire et rechargement des données
         films.push(filmAAjouter);
         formAjoutFilm.reset();
@@ -271,3 +314,17 @@ function ajouterFilm(event){
 // Écoute sur l'envoi du formulaire d'ajout
 // prevent default pour ne pas recharger la page
 formAjoutFilm.addEventListener("submit", ajouterFilm);
+
+// Placement d'une écoute sur le container des films
+document.querySelector("#films-container").addEventListener("click", (event) => {
+
+    const boutonDeSuppression = event.target;
+
+    // ignorer le clic si on clique autre part dans la tuile
+    if (boutonDeSuppression === false) return;
+
+    // Récupération de l'id du film à "supprimer", on le filtre simplement
+    const idFilmASupprimer = Number(boutonDeSuppression.dataset.id);
+    films = films.filter(film => film.id !== idFilmASupprimer);
+    rafraichir();
+});
