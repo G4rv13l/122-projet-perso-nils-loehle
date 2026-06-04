@@ -1,97 +1,118 @@
-@media (min-width: 768px) {
-
+/*
+=====================================================
+------------------- Styles de base ------------------
+--------- (communs à toutes les tailles) ------------
+=====================================================
+*/
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: system-ui, sans-serif;
-  padding: 2rem;
+    font-family: system-ui, sans-serif;
+    padding: 2rem;
 }
 
 header {
-  display: flex;
-  margin: 0 auto 25px auto;
-  flex-direction: column;
-  max-width: 600px;
-}
-
-.empty-alert {
-  grid-column: 1 / -1;
-  text-align: center;
-  margin-top: 5%;
-}
-
-
-.films-grid {
-  display: grid;
-  /* Chaque colonne fait minimum 280px et maximum une part de la page */
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-  padding: 16px;
-  margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto 25px auto;
 }
 
 img {
-  border-radius: 8px;
+    border-radius: 8px;
 }
 
 .film-poster {
-  width: 100%;           /* prend toute la largeur de la carte */
-  height: auto;        /* hauteur fixe identique pour toutes */
-  object-fit: contain;     /* recadre sans déformer l'image */
-  display: block;
+    width: 100%; /* prend toute la largeur de la carte */
+    height: auto; /* hauteur fixe identique pour toutes */
+    object-fit: contain; /* recadre sans déformer l'image */
+    display: block;
 }
 
 section.controls {
-  display: flex;
-  flex-direction: column; /* Dispose les éléments en colonne */
-  gap: 1.5rem;
-  max-width: 600px;
-  margin: 0 auto;
+    display: flex;
+    flex-direction: column; /* Dispose les éléments en colonne */
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .controls input {
-  min-width: 125px;
-  max-width: 200px;
-  box-sizing: border-box;
+    min-width: 125px;
+    max-width: 200px;
+    box-sizing: border-box;
+}
+
+.empty-alert {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.films-grid {
+    display: grid;
+    /* Chaque colonne fait minimum 280px et maximum une part de la page */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    padding: 16px;
+    margin-top: 50px;
 }
 
 .tuile-film {
-  position: relative;
-  background: #f0f0f0;
-  padding: 2rem;
-  border-radius: 8px;
-  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    position: relative;
+    background: #f0f0f0;
+    padding: 2rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .tuile-film:hover {
-  transform: scale(1.05);
-  background: rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .btn-supprimer {
-  position: absolute;
-  bottom: 0.5rem;
-  right: 0.5rem;
-  width: 2rem;
-  height: 2rem;
-  background: white;
-  border-radius: 50%;
-  border: none;
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    background: white;
+    border-radius: 50%;
+    border: none;
+    transition: opacity 0.2s ease-in-out;
 }
 
-.tuile-film:hover .btn-supprimer {
-  opacity: 1;
-}
-}
-
+/*
+=====================================================
+------------------- Petits écrans -------------------
+=====================================================
+*/
 @media (max-width: 767px) {
-  .btn-supprimer {
-    opacity: 1;
-  }
+
+    /* Bouton supprimer toujours visible (pas de survol au doigt) */
+    .btn-supprimer {
+        opacity: 1;
+    }
+}
+
+/*
+=====================================================
+-------------- Plus grands écrans -------------------
+=====================================================
+*/
+@media (min-width: 768px) {
+
+    /* Bouton supprimer masqué, révélé au survol de la tuile */
+    .btn-supprimer {
+        opacity: 0;
+    }
+
+    .tuile-film:hover .btn-supprimer {
+        opacity: 1;
+    }
 }
